@@ -70,12 +70,17 @@ parse() {
 		#fi
 
 		# execute command and capture t_std/t_err
-		eval "$( (eval $cmd) 2> >(t_err=$(cat); typeset -p t_err) > >(t_std=$(cat); typeset -p t_std) )"
-		if [ -n "$t_std" ]; then
-			status="${t_std##*$'\n'}"
-		fi
-		if [ -n "$t_err" ]; then
-			status="${t_err##*$'\n'}"
+		if [ -n "$cmd" ]; then
+			eval "$( (eval $cmd) 2> >(t_err=$(cat); typeset -p t_err) > >(t_std=$(cat); typeset -p t_std) )"
+			if [ -n "$t_std" ]; then
+				status="${t_std##*$'\n'}"
+			fi
+			if [ -n "$t_err" ]; then
+				status="${t_err##*$'\n'}"
+			fi
+		else
+			cmd="(none)"
+			status="(none)"
 		fi
 
 		# log
@@ -95,8 +100,13 @@ create_command() {
 	map=""
 
 	# get keymap from config
-	if [[ -f $C ]]; then
+	if [ -f "$C" ]; then
 		map=`grep "^${action} ${key} " ${C} | tail -n 1`
+	fi
+
+	# keymap not set
+	if [ -z "$map" ]; then
+		return
 	fi
 
 	# split
@@ -104,6 +114,11 @@ create_command() {
 	key=`cut -d " " -f2 <<< "$map"`
 	codes=`cut -d " " -f3- <<< "$map"`
 	result="xte"
+
+	# keymap invalid
+	if [ -z "$codes" ]; then
+		return
+	fi
 
 	# codes to array (preserve spaces in quoted arguments)
 	IFS=$'\n'; array=($(echo $codes | egrep -o '"[^"]*"|\S+'))
@@ -125,6 +140,9 @@ create_command() {
 			result="${result} 'keyup ${array[$key]}'"
 		fi
 	done
+
+	# display
+	result="${result} -x${X}"
 
 	echo $result
 }
@@ -178,10 +196,10 @@ fi
 cec-client --info
 
 # warning
-if [[ -f $C ]]; then
+if [ ! -f "$C" ]; then
 	echo "Warning: config file not found \`${C}\`."
 fi
-if ! [ -n "$1" ]; then
+if [ -z "$X" ]; then
 	echo "Warning: display variable not set."
 fi
 
