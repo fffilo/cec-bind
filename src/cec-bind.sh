@@ -44,19 +44,7 @@ osd_name() {
 
 # cec-clinet
 client() {
-	#cec-client
-
-	echo "DEBUG:   [           19482]     key pressed: f1 (43)"
-	sleep 5
-	echo "DEBUG:   [           19482]     key pressed: play (44)"
-	sleep 5
-	echo "DEBUG:   [           19483]     key pressed: channel-up (45)"
-	sleep 5
-	echo "DEBUG:   [           19484]     key pressed: 0 (46)"
-	sleep 5
-	echo "DEBUG:   [           19485]     key pressed: select (47)"
-	sleep 5
-	echo "DEBUG:   [           19486]     key pressed: record (48)"
+	cec-client
 }
 
 # filter cec-client key events
