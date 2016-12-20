@@ -1,0 +1,44 @@
+# cec-bind: cec-client key map
+#
+# use keymap by following example:
+# {action} {remotekey} {keycodes}
+#
+# action    - remote controll action (pressed|released|auto-released)
+# remotekey - remote controll key
+# keycode   - keyboard key (`man xte` for more info)
+#
+# example (key pressed: select -> ctrl+r):
+# pressed select Control_L r
+#
+# example (key released: exit -> ctrl+alt+del):
+# released exit Control_L Alt_L Delete
+
+pressed 0 0
+pressed 1 1
+pressed 2 2
+pressed 3 3
+pressed 4 4
+pressed 5 5
+pressed 6 6
+pressed 7 7
+pressed 8 8
+pressed 9 9
+pressed channel-up Page_Up
+pressed channel-down Page_Down
+pressed left Left
+pressed right Right
+pressed up Up
+pressed down Down
+pressed select Return
+pressed return BackSpace
+pressed exit Escape
+pressed f1 F1
+pressed f2 F2
+pressed f3 F3
+pressed f4 F4
+pressed play x
+pressed pause c
+pressed record
+pressed stop v
+pressed rewind y
+pressed fast-forward z
