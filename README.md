@@ -31,3 +31,7 @@ can be 'converted' into keyboard event (as set in [config](src/config.map) file)
 	chmod +x cec-bind/src/cec-bind.sh
 	sudo mv cec-bind/src/cec-bind.sh /usr/local/bin/cec-bind
 	mv cec-bind/src/config.map ~/.cec-bind
+
+### Screenshot
+
+![screenshot](screenshot.png "screenshot")
