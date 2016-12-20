@@ -9,7 +9,7 @@ show_help() {
 	echo "set in config file)."
 	echo ""
 	echo "For more info see:"
-	echo "    http://to/do/set/github/path"
+	echo "    https://github.com/fffilo/cec-bind.git"
 	echo ""
 	echo "Dependencies:"
 	echo "    cec-client            https://github.com/Pulse-Eight/libcec"

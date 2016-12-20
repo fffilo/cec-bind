@@ -5,7 +5,7 @@ Simple `cec-client` wrapper.
 
 This script starts CEC client in the background.
 Every remote control key event (pressed, released, auto-released)
-can be 'converted' into keyboard event (as set in [config](config.map) file).
+can be 'converted' into keyboard event (as set in [config](src/config.map) file).
 
 ### Dependencies
 
@@ -27,7 +27,7 @@ can be 'converted' into keyboard event (as set in [config](config.map) file).
 ### Install
 
 	cd /tmp
-	git clone http://to/do/set/github/path
+	git clone https://github.com/fffilo/cec-bind.git
 	chmod +x cec-bind/src/cec-bind.sh
 	sudo mv cec-bind/src/cec-bind.sh /usr/local/bin/cec-bind
 	mv cec-bind/src/config.map ~/.cec-bind
